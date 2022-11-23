@@ -3,7 +3,7 @@ const subjectsModel = require("./subjectsMDB");
 
 const MarksSchema = new mongoose.Schema({
     date : Date,
-    marks: Number,
+    mark: Number,
     subject: subjectsModel.schema
 })
 

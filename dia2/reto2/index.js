@@ -69,6 +69,19 @@ let markDocument2 = new Marks({
     subject: subjectDocument2
 })
 
+let markDocument3 = new Marks({
+    date: "2021-09-12",
+    mark: 7,
+    subject: subjectDocument1
+})
+
+let markDocument4 = new Marks({
+    date: "2021-12-12",
+    mark: 9,
+    subject: subjectDocument3
+})
+
+
 // markDocument1.save(checkRespuesta);
 
 // // INTRODUCIR ESTUDIANTES
@@ -83,8 +96,13 @@ let studientDocument2 = new Studients({
     lastName: "Mariano",
     marks: [markDocument2]
 })
+let studientDocument3 = new Studients({
+    firstName: "Ana",
+    lastName: "Sanchez",
+    marks: [markDocument3, markDocument4]
+})
 
-// studientDocument1.save(checkRespuesta);
+// studientDocument3.save(checkRespuesta);
 
 
 
@@ -102,6 +120,15 @@ function checkRespuesta(err, res)
 
 // // MOSTRAR POR CONSOLA TODAS LAS NOTAS DE UN ESTUDIANTE
 
+
+// Studients.findOne({firstName:"Ana"}) 
+//     .then((studient)=>{     
+//         console.log("Estudiante localizado");     
+//         console.log(studient); }) 
+//     .catch(()=>{     
+//         console.log("Error"); })
+
+
 // Studients.find({}).where("firstName").equals("Juan")
 //     .then(function (studient) 
 //     {
@@ -115,17 +142,30 @@ function checkRespuesta(err, res)
 // // MOSTRAR POR CONSOLA TODAS LAS ASIGNATURAS DEL ALUMNO
 
 
-Studients.find({}).where("firstName").equals("Juan")
+// Studients.find({}).where("firstName").equals("Ana")
+//     .then(function (studient) 
+//     {
+//         for(let i = 0; i<= studient[0].marks.length; i++){
+//             console.log(studient[0].marks[i].subject);
+//         }
+        
+//     })
+//     .catch(function () {
+//         console.log("Error");
+//     })
+
+
+// // MOSTRAR POR CONSOLA TODOS LOS PROFESORES DEL ALUMNO    
+
+
+Studients.find({}).where("firstName").equals("Ana")
     .then(function (studient) 
     {
         for(let i = 0; i<= studient[0].marks.length; i++){
-            console.log(studient[0].marks[i].subject);
+            console.log(studient[0].marks[i].subject.teachers);
         }
         
     })
     .catch(function () {
         console.log("Error");
     })
-
-
-// // MOSTRAR POR CONSOLA TODOS LOS PROFESORES DEL ALUMNO    
