@@ -30,7 +30,7 @@ let teacherDocument3 = new Teachers({
 });
 
 
-// teacherDocument1.save(checkRespuesta);
+
 
 
 // // INTRODUCIR ASIGNATURAS
@@ -52,7 +52,6 @@ let subjectDocument3 = new Subjects({
 })
 
 
-// subjectDocument1.save(checkRespuesta);
 
 
 // // INTRODUCIR NOTAS
@@ -82,7 +81,6 @@ let markDocument4 = new Marks({
 })
 
 
-// markDocument1.save(checkRespuesta);
 
 // // INTRODUCIR ESTUDIANTES
 
@@ -102,9 +100,13 @@ let studientDocument3 = new Studients({
     marks: [markDocument3, markDocument4]
 })
 
-// studientDocument3.save(checkRespuesta);
+// studientDocument1.save(checkRespuesta);
 
-
+// Studients.create({
+//     firstName: "Pepe",
+//     lastName: "Mariano",
+//     marks: [markDocument2]
+// }, )
 
 function checkRespuesta(err, res) 
 {
@@ -142,30 +144,46 @@ function checkRespuesta(err, res)
 // // MOSTRAR POR CONSOLA TODAS LAS ASIGNATURAS DEL ALUMNO
 
 
-// Studients.find({}).where("firstName").equals("Ana")
+
+Studients.findOne({firstName:"Pepe"}) 
+
+    .then((data)=>{   
+        for(let i = 0; i<=data.marks.length; i++ )  {
+            console.log(data.marks[i]);
+        }
+        }) 
+    .catch((err)=>{     
+        console.log(' errorrrrrr :  ' + err); })
+
+
+// Studients.find({}).where("firstName").equals("Pepe")
 //     .then(function (studient) 
 //     {
-//         for(let i = 0; i<= studient[0].marks.length; i++){
+//         // console.log(studient);
+//         // console.log(studient[0].marks);
+//         for(let i = 0; i <= studient[0].marks.length; i++){
 //             console.log(studient[0].marks[i].subject);
 //         }
         
 //     })
-//     .catch(function () {
-//         console.log("Error");
+//     .catch(function (err) {
+//         console.log(err);
 //     })
+
+
 
 
 // // MOSTRAR POR CONSOLA TODOS LOS PROFESORES DEL ALUMNO    
 
 
-Studients.find({}).where("firstName").equals("Ana")
-    .then(function (studient) 
-    {
-        for(let i = 0; i<= studient[0].marks.length; i++){
-            console.log(studient[0].marks[i].subject.teachers);
-        }
+// Studients.find({}).where("firstName").equals("Ana")
+//     .then(function (studient) 
+//     {
+//         for(let i = 0; i<= studient[0].marks.length; i++){
+//             console.log(studient[0].marks[i].subject.teachers);
+//         }
         
-    })
-    .catch(function () {
-        console.log("Error");
-    })
+//     })
+//     .catch(function (err) {
+//         console.log(err);
+//     })

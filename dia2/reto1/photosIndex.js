@@ -86,7 +86,7 @@ function eliminatePhoto(nombreUsuario, title ) {
         console.log("Error");    
     })
 }
-// eliminatePhoto("JaviFZ", "Boba Fett");
+eliminatePhoto("JaviFZ", "Boba Fett");
 
 // Photo.deleteOne({nombreUsuario: "JaviFZ", title: "Boba Fett" })
 //     .then(function (photo) 
