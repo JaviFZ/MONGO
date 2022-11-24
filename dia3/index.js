@@ -54,13 +54,13 @@ let nota2 = new Marks({
 // nota2.save(checkRespuesta);
 
 // Marks.create({
-//     date : "2021-07-12",
+//     date : "2022-10-09",
 //     mark : 9,
-//     studient_first_name : "Javi",
+//     studient_first_name : "Natalia",
 //     studient_last_name : "Fernandez",
 //     group_name : "presencial",
-//     subject_name : "mongo",
-//     teachers: [teacher2, teacher1]
+//     subject_name : "sql",
+//     teachers: [teacher3]
 // }, checkRespuesta)
 
 
@@ -145,7 +145,7 @@ function checkRespuesta(err, res)
 // // MOSTRAR EL NUMERO TOTAL DE ALUMNOS POR GRUPO ORDENADOS POR GRUPO EN ORDEN ALFABETICO INVERSO
 
 Marks
-.aggregate([{$unwind:"$teachers"} , {$project: {_id: 0, teachers:1}}])
+.aggregate([{$group: {"_id": null, "total alumnos por grupo": {"$sum": "$group"}}}])
 .then((result) =>
 {
     console.log(result);
@@ -164,4 +164,43 @@ Marks
 
 
 
+
 // // CALCULAR EL NUMERO DE PROFESORES QUE HAY POR CADA ASIGNATURA
+
+
+
+
+
+
+
+// // Obtén el nombre, apellido y la nota de los alumnos que tengan una nota mayor de 8 o la nota tenga fecha del año pasado o anterior.
+
+
+
+
+
+
+
+// // Obtén la media de las notas que se han dado en el último año por asignatura.
+
+
+
+
+
+
+
+// // Obtén la media aritmética de las notas que se han dado en el último año por nombre de alumno.
+
+
+
+
+
+
+
+// // Obtén los nombres de los alumnos y la cantidad total de asignaturas por alumno cuyo profesor sea uno que elijáis.
+
+
+
+
+
+
