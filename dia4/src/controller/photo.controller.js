@@ -21,7 +21,7 @@ function getPhoto(request, response)
     }
     else
     {
-        PhotoModel.findOne({nombreUsuario: request.query.nombreUsuario})
+        PhotoModel.find({nombreUsuario: request.query.nombreUsuario})
         .then((photo) => 
         {
             console.log(photo)

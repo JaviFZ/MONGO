@@ -16,7 +16,4 @@ router.delete("/photos", photoCtrl.deletePhoto);
 
 
 
-
-
-
 module.exports = router;
