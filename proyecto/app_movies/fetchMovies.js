@@ -213,35 +213,39 @@ function putMovie() {
     let newProducer = document.getElementById("producer").value;
     let id = document.getElementById("id_movie").value;
 
-    if(newTitle == ''){
-        newTitle = null;
+
+    let newMovie = {id}
+
+
+    if(newTitle != ''){
+        newMovie.title = newTitle;
     }
-    if(newGenre == ''){
-        newGenre = null;
+    if(newGenre != ''){
+        newMovie.genre = null;
     }
-    if(newActor == ''){
-        newActor= null;
+    if(newActor != ''){
+        newMovie.actors = newActor;
     }
-    if(newScreenwritter == ''){
-        newScreenwritter = null;
+    if(newScreenwritter != ''){
+        newMovie.screenwritters = newScreenwritter;
     }
-    if(newDirector == ''){
-        newDirector = null;
+    if(newDirector != ''){
+        newMovie.directors = newDirector;
     }
-    if(newProducer == ''){
-        newProducer = null;
+    if(newProducer != ''){
+        newMovie.producer = newProducer;
     }
 
-    let newMovie ={
-        title: newTitle, 
-        genre: newGenre, 
-        actors: newActor, 
-        screenwritters: newScreenwritter,
-        directors: newDirector,
-        producer: newProducer,
-        id: id
+    // let newMovie ={
+    //     title: newTitle, 
+    //     genre: newGenre, 
+    //     actors: newActor, 
+    //     screenwritters: newScreenwritter,
+    //     directors: newDirector,
+    //     producer: newProducer,
+    //     id: id
 
-    }
+    // }
     console.log(newMovie);
     
     let param = {headers: {"Content-type": "application/json; charset= UTF-8",},
@@ -261,7 +265,7 @@ function putMovie() {
         })
         .then((data) => {
           console.log(data.resultado);
-          showToast(`Pelicula con ID: ${result._id}  modificada Correctamente`, "bg-success")
+          showToast(`Pelicula modificada Correctamente`, "bg-success")
         })
         .catch((error) => {
           console.log(error);
@@ -295,7 +299,7 @@ function deleteMovie() {
         })
         .then((data) => {
         // console.log(data);
-        showToast(`Pelicula con ID: ${result._id} eliminada`, "bg-success")
+        showToast(`Pelicula eliminada`, "bg-success")
         })
         .catch((error) => {
         console.log(error);

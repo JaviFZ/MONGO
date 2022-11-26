@@ -83,7 +83,7 @@ function postProf()
             if (result.error)
                 showToast("ERROR: " +  result.mensaje, "bg-danger")
             else
-                showToast(`professional con ID: ${result}  Creado Correctamente`, "bg-success")
+                showToast(`professional con ID: ${result._id}  Creado Correctamente`, "bg-success")
 
             console.log(result)
         })
@@ -196,30 +196,30 @@ function putProf() {
     let newProfession = document.getElementById("year_ingress").value;
     let id = document.getElementById("id_studient").value;
 
-    
+    let newProfessional = {id}
 
-    if(newName == ''){
-        newName = name;
+    if(newName != ''){
+        newProfessional.name = newName;
     }
-    if(newAge == ''){
-        newAge = age;
+    if(newAge != ''){
+        newProfessional.age = newAge;
     }
-    if(newOscarsNumber == ''){
-        newOscarsNumber = oscarsNumber;
+    if(newOscarsNumber != ''){
+        newProfessional.oscarsNumber = newOscarsNumber;
     }
-    if(newProfession == ''){
-        newProfession = profession;
+    if(newProfession != ''){
+        newProfessional.profession = newProfession;
     }
 
-    let newProfessional ={
-        name: newName, 
-        age: newAge, 
-        oscarsNumber: newOscarsNumber, 
-        profession: newProfession,
-        id: id
+    // let newProfessional ={
+    //     name: newName, 
+    //     age: newAge, 
+    //     oscarsNumber: newOscarsNumber, 
+    //     profession: newProfession,
+    //     id: id
 
-    }
-    console.log(newProfessional);
+    // }
+    // console.log(newProfessional);
     
     let param = {headers: {"Content-type": "application/json; charset= UTF-8",},
         method: "PUT",
@@ -238,7 +238,7 @@ function putProf() {
         })
         .then((data) => {
           console.log(data.resultado);
-          showToast("Profesional modificado correctamente", "bg-success")
+          showToast(`profesional actualizado Correctamente`, "bg-success")
         })
         .catch((error) => {
           console.log(error);
@@ -271,8 +271,8 @@ function deleteProf() {
         return data.json()
         })
         .then((data) => {
-        // console.log(data);
-        showToast("Profesional eliminado", "bg-success")
+        console.log(data);
+        showToast(`professional eliminado Correctamente`, "bg-success")
         })
         .catch((error) => {
         console.log(error);
