@@ -142,22 +142,51 @@ function checkRespuesta(err, res)
 
 
 
+
 // // MOSTRAR EL NUMERO TOTAL DE ALUMNOS POR GRUPO ORDENADOS POR GRUPO EN ORDEN ALFABETICO INVERSO
 
-Marks
-.aggregate([{$group: {"_id": null, "total alumnos por grupo": {"$sum": "$group"}}}])
-.then((result) =>
-{
-    console.log(result);
-})
-.catch((error) =>
-{
-    console.log(error);
-})
+// Marks
+//     .aggregate([{
+//         $group: { "_id": { grupo: "$group_name"}, "totalAlumnos": { "$sum": 1 }},
+//     }, 
+//     {
+//         $project: { grupo: "$_id.grupo", totalAlumnos: 1, _id: 0 }
+//     }, 
+//     {
+//         $sort: { grupo: -1 }
+//     }
+//     ])
+//     .then((result) => {
+//         console.log(result);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
 
 
 
-// // OBTENER EL TOP 5 DE LOS NOMBRES DE LAS ASIGNATURAS CUYA NOTA MEDIA SEA MAYOR QUE 5
+// // OBTENER EL TOP 2 DE LOS NOMBRES DE LAS ASIGNATURAS CUYA NOTA MEDIA SEA MAYOR QUE 7
+
+// Marks.aggregate([{ 
+//         $group: { "_id": { asignatura: "$subject_name" }, "NotasMedias": { "$avg": "$mark" } } 
+//     },
+//     { 
+//         $match: { NotasMedias: { $gt: 6 } } 
+//     },
+//     {
+//         $sort: { NotasMedias: -1 }
+//     },
+//     {
+//         $limit: 2
+//     }
+//     ])
+//     .then((result) => {
+//         console.log(result);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
+
 
 
 
@@ -168,7 +197,18 @@ Marks
 // // CALCULAR EL NUMERO DE PROFESORES QUE HAY POR CADA ASIGNATURA
 
 
-
+// Marks.aggregate([{ 
+//         $unwind: "$teachers" 
+//     },
+//     {
+//         $group: { "_id": { "Asignatura": "$subject_name" }, "Nº de Profesores": { "$sum": 1 } } 
+//     }])
+//     .then((result) => {
+//         console.log(result);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
 
 
 
@@ -176,7 +216,17 @@ Marks
 // // Obtén el nombre, apellido y la nota de los alumnos que tengan una nota mayor de 8 o la nota tenga fecha del año pasado o anterior.
 
 
-
+// Marks.aggregate([{ 
+//         $match: { "$or": [{ "mark": { "$gt": 8 } }, { "date": { "$lte": "2021-12-12" } }] } },
+//     { 
+//         $project: { "studient_first_name": 1, "studient_last_name": 1, "mark": 1, "_id": 0 } 
+//     }])
+//     .then((result) => {
+//         console.log(result);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
 
 
 
@@ -184,7 +234,18 @@ Marks
 // // Obtén la media de las notas que se han dado en el último año por asignatura.
 
 
-
+// Marks.aggregate([{
+//         $match: { "date": { "$gte": new Date("2021-12-12") } } 
+//     }, 
+//     { 
+//         $group: { "_id": { "Asignatura": "$subject_name" }, "Media": { "$avg": "$mark" } } 
+//     }])
+//     .then((result) => {
+//         console.log(result);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
 
 
 
@@ -192,7 +253,18 @@ Marks
 // // Obtén la media aritmética de las notas que se han dado en el último año por nombre de alumno.
 
 
-
+// Marks.aggregate([{ 
+//         $match: { "date": { "$gte": new Date("2021-12-12") } } 
+//     }, 
+//     { 
+//         $group: { "_id": { "Nombre": "$studient_first_name" }, "Media": { "$avg": "$mark" } } 
+//     }])
+//     .then((result) => {
+//         console.log(result);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
 
 
 
@@ -200,7 +272,21 @@ Marks
 // // Obtén los nombres de los alumnos y la cantidad total de asignaturas por alumno cuyo profesor sea uno que elijáis.
 
 
-
+// Marks.aggregate([{ 
+//         $unwind: "$teachers" 
+//     }, 
+//     { 
+//         $match: { "teachers.teacher_first_name": "Carmen" } 
+//     }, 
+//     { 
+//         $group: { "_id": { "Alumnos": "$studient_first_name" }, "value": { "$sum": 1 } } 
+//     }])
+//     .then((result) => {
+//         console.log(result);
+//     })
+//     .catch((error) => {
+//         console.log(error);
+//     })
 
 
 
