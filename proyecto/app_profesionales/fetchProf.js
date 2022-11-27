@@ -54,6 +54,32 @@ function showToast(message, color)
 
 
 
+function tarjeta() {
+    // console.log(professional);
+    document.getElementById("movies").innerHTML= '';
+    movies.forEach(function (movie) {
+        document.getElementById("movies").innerHTML += `
+        <div class="card" >
+                <div class="card-body">
+                <h5 class="card-title" style="height:80px" id="card_title1">ID profesional: ${data._id}</h5>
+                <p class="card-text"> 
+                Nombre: ${data.name} <br> 
+                Edad: ${data.age}<br>
+                Numero de Oscars: ${data.oscarsNumber}<br>
+                Profesion: ${data.profession}<br>
+
+                </p>
+                
+                </div>
+            </div>
+            `
+    })
+}
+window.onload = (event) => {
+    tarjeta();
+};
+
+
 
 function postProf()
 {
@@ -127,12 +153,17 @@ function getProf()
               console.log(id + 'en fech');
               console.log(data);
         // console.log(solicitud);                                
-        lista.innerHTML += `<p>ID profesional: ${data._id} <br> 
-                            Nombre: ${data.name} <br>  
-                            Edad: ${data.age}<br>
-                            Numero de Oscars: ${data.oscarsNumber}<br>
-                            Profesion: ${data.profession}<br>
-                            </p>`
+        lista.innerHTML += `<div class="card" >
+                            <div class="card-body">
+                            <h5 class="card-title" style="height:80px" id="card_title1">ID profesional: ${data._id}</h5>
+                            <p class="card-text"> 
+                            <b>Nombre:</b> ${data.name} <br> 
+                            <b>Edad: </b>${data.age}<br>
+                            <b>Numero de Oscars: </b>${data.oscarsNumber}<br>
+                            <b>Profesion: </b>${data.profession}<br>
+                            </p>
+                        </div>
+                    </div>`
                                                         
         }
         else
@@ -164,12 +195,18 @@ function getProf()
 
     result.forEach(function (professional) {               
         // console.log(solicitud);                                
-        lista.innerHTML += `<p>ID: ${professional._id} <br>
-                            Nombre: ${professional.name} <br>  
-                            Edad: ${professional.age}<br>
-                            Numero de Oscars: ${professional.oscarsNumber}<br>
-                            Profesion: ${professional.profession}<br>
-                            </p>`
+        lista.innerHTML += `
+                            <div class="card" >
+                            <div class="card-body">
+                            <h5 class="card-title" style="height:80px" id="card_title1">ID profesional: ${professional._id}</h5>
+                            <p class="card-text"> 
+                            <b>Nombre:</b> ${professional.name} <br> 
+                            <b>Edad: </b>${professional.age}<br>
+                            <b>Numero de Oscars:</b> ${professional.oscarsNumber}<br>
+                            <b>Profesion:</b> ${professional.profession}<br>
+                            </p>
+                        </div>
+                    </div>`
     })                                                       
         }
         else
@@ -182,7 +219,7 @@ function getProf()
     })
     }
 
-    
+    tarjeta();
 }
 
 

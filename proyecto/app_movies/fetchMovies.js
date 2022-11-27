@@ -138,14 +138,19 @@ function getMovie()
             //   console.log(id + 'en fech');
               console.log(data);
         // console.log(solicitud);                                
-        lista.innerHTML += `<p>ID pelicula: ${data._id} <br> 
-                            Titulo: ${data.title} <br>  
-                            Genero: ${data.genre}<br>
-                            Actores: ${data.actors}<br>
-                            Guionistas: ${data.screenwritters}<br>
-                            Directores: ${data.directors}<br>
-                            Productora: ${data.producer}<br>
-                            </p>`
+        lista.innerHTML += `<div class="card" >
+                            <div class="card-body">
+                            <h5 class="card-title" style="height:80px" id="card_title1">ID pelicula:</br> ${data._id}</h5>
+                            <p class="card-text"> 
+                            <b>Titulo:</b> ${data.title} <br> 
+                            <b>Genero: </b>${data.genre}<br>
+                            <b>Actores: </b>${data.actors}<br>
+                            <b>Guionistas: </b>${data.screenwritters}<br>
+                            <b>Directores: </b>${data.directors}<br>
+                            <b>Productora: </b>${data.producer}<br>
+                            </p>
+                        </div>
+                    </div>`
                                                         
         }
         else
@@ -177,14 +182,19 @@ function getMovie()
 
     result.forEach(function (movie) {               
         // console.log(solicitud);                                
-        lista.innerHTML += `<p>ID pelicula: ${movie._id} <br>
-                            Titulo: ${movie.title} <br>  
-                            Genero: ${movie.genre}<br>
-                            Actores: ${movie.actors}<br>
-                            Guionistas: ${movie.screenwritters}<br>
-                            Directores: ${movie.directors}<br>
-                            Productora: ${movie.producer}<br>
-                            </p>`
+        lista.innerHTML += `<div class="card" >
+                            <div class="card-body">
+                            <h5 class="card-title" style="height:80px" id="card_title1">ID pelicula:</br> ${movie._id}</h5>
+                            <p class="card-text"> 
+                            <b>Titulo:</b> ${movie.title} <br> 
+                            <b>Genero: </b>${movie.genre}<br>
+                            <b>Actores: </b>${movie.actors}<br>
+                            <b>Guionistas: </b>${movie.screenwritters}<br>
+                            <b>Directores: </b>${movie.directors}<br>
+                            <b>Productora: </b>${movie.producer}<br>
+                            </p>
+                        </div>
+                    </div>`
     })                                                       
         }
         else
